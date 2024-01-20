@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Account</title>
+        <meta charset='UTF'>
+        <link rel="stylesheet" href="stylesheets/admin.css">
+        <script src="javascripts/home.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="project_logo.png" alt="CovidWatch"/>
+            <h1> </h1>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn right" onclick="dropdown()"><i class="fa fa-user"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a class="inner" href="/home">Home</a>
+                        <button class="inner" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+        </header>
+        <main id="main">
+            <div id="details">
+                <div class="n_details">Name: [some name]</div>
+                <div class="e_details">
+                    Email: [some email]
+                    <button>Change Email?</button>
+                </div>
+                <button class="password_change">Change Password?</button>
+            </div>
+            <br>
+            <button type="button" class="collapsible">View Venue Check-in History <i class="arrow down"></i> </button>
+            <div class="content">
+                <br>
+            </div>
+            <div>
+                <h3>Update latest hotspot</h3>
+                <tag for="hotspot">Update hotspot: </tag>
+                <input id="hotspot" type="text"></input>
+            </div>
+            <div>
+                <h3>Update news blogs</h3>
+                <tag for="news1">Update news blog 1: </tag>
+                <input id="news1" type="text"></input>
+                <br>
+                <tag for="news2">Update news blog 2: </tag>
+                <input id="news2" type="text"></input>
+                <br>
+                <tag for="news3">Update news blog 3: </tag>
+                <input id="news3" type="text"></input>
+            </div>
+
+            <div id="generate_code">
+                <h3>Generate a unique code for my venue: </h3>
+                <div id="unique_code"></div>
+                <button onclick="makeid(5)">generate code</button><br/>
+
+            </div>
+            <br>
+<form action="action_page.php" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+
+        </main>
+        <br>
+      <footer>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="#FAQS">FAQS</a>
+      </footer>
+    </body>
+</html>

@@ -1,0 +1,198 @@
+body {
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  background-color: #f2f2f2;
+  border-top: 3px solid #696969;
+  top: 0;
+  padding: 1.5em 1.5em;
+  border-bottom: 3px solid #696969;
+}
+
+h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+  color: #000000;
+}
+
+button {
+  background-color: #e7e7e7;
+  border: hidden;
+  border-radius: 0.2em;
+  padding: 0.6em;
+  margin: 0 0.6em;
+  color: #000000;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #d9d9d9;
+}
+
+header button {
+  float: right;
+}
+
+header .logo {
+  float: left;
+  margin: 0.01em;
+  height: 40px;
+  width: 100px;
+
+}
+
+main, section {
+  padding: 0.5em 1em;
+}
+
+
+#details {
+  margin-right: 33%;
+}
+
+
+div .n_details {
+  border: 3px solid #1a1a1a;
+  border-width: 2px;
+}
+
+div .e_details {
+  border: 3px solid #1a1a1a;
+  border-top: none;
+  border-width: 2px;
+}
+
+div .e_details button {
+  text-align: center;
+  margin: auto;
+  width: 125px;
+  height: 18px;
+  padding: 1px;
+  float: right;
+  border-radius: 0px;
+}
+
+.password_change {
+  text-align: center;
+  margin: auto;
+  width: 125px;
+  height: 18px;
+  padding: 1px;
+  border-radius: 0px;
+}
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size:15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+#generate_code a {
+  margin-top: 200px;
+}
+
+
+
+footer {
+  overflow: hidden;
+  background-color: #f2f2f2;
+  top: 0;
+  bottom: 0;
+  border-top: 3px solid #1a1a1a;
+  width: 100vw;
+}
+
+footer a:hover
+{
+  background-color: #e6e6e6;
+}
+
+footer a {
+  float: left;
+  display: block;
+  color: black;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 30px 16px;
+  font-size: 20px;
+}
+
+
+.dropdown {
+  position: relative;
+  float: right;
+  margin: 0 0.6em;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 60px;
+  padding: 0.1em;
+  color: #000000;
+  text-align: left;
+  cursor: pointer;
+}
+
+.inner {
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  padding: 0.6em;
+  background-color: #f1f1f1;
+  border: hidden;
+  border-radius: 0em;
+  margin: 0em;
+  float: none;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+
+}
+
+.show {
+  display: block;
+
+}
+
+.dropbtn {
+  font-size: 17px;
+}
+

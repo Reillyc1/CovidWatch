@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CovidWatch</title>
+        <meta charset= "UTF-8" >
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <script src="javascripts/home.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet'/>
+    </head>
+    <body onload="showHide()">
+        <div id="site">
+            <header>
+                <img class="logo" src="project_logo.png" alt="CovidWatch"  width=100%>
+                <h1> </h1>
+                <button type="button" class="right logged_out"><a href="/signup.html">Sign Up</a></button>
+                <button type="button" class="right logged_out"><a href="/login.html">Login</a></button>
+                <div class="dropdown logged_in">
+                    <button type="button" class="dropbtn right" onclick="dropdown()"><i class="fa fa-user"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a class="inner" href="/account">Account</a>
+                        <button class="inner" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </header>
+            <main id="main">
+                <div class="logged_in">
+                    <h2>Venue Check-In &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input placeholder="Enter Venue/Location Code" type="text" id="check_in" required>
+                    <input placeholder="Enter Username" type="username" id="username" required>
+                    <button class="check_in" onclick="check_ins()">Check in!</button>
+                    </h2>
+                </div>
+                <div class = "container">
+                    <div id='map'v-show = "tab == 'map'">a</div>
+                    <script>
+                    mapboxgl.accessToken = 'pk.eyJ1Ijoia2F0ZXIwMDAiLCJhIjoiY2twdjY2dHYyMGt5MTJ1b2pkMDRybWV3ciJ9.AaF3nglVr2e1Xn4mGYUVbA';
+                    var map = new mapboxgl.Map({
+                        container: 'map', // container ID
+                        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                        center: [133.7751,-25.2744], // starting position [lng, lat]
+                        zoom: 1 // starting zoom
+                    });
+                    var nav = new mapboxgl.NavigationControl();
+                    map.addControl(nav, 'top-left');
+                    var marker = new mapboxgl.Marker({
+                        color: "#990000",
+                        }).setLngLat([144.9631,-37.8136])
+                        .addTo(map);
+                    </script>
+                    <div id = 'markers' v-if = "tab == 'markers'"></div>
+                    <table class="pure-table pure-table-horizontal">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Longitude</th>
+                            <th>Latitude</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for = 'marker in markers'>
+                            <td>{{ marker.ID }}</td>
+                            <td>{{ marker.longitude }}</td>
+                            <td>{{ marker.latitude }}</td>
+                    </tbody>
+                </table>
+                <div id = 'add' v-if = "tab == 'add'"></div>
+                <hr>
+                <div class="covid_news">
+                    <div class="column">
+                        <img src="images/covid_new2.png" alt="Snow" style="width:100%">
+                    </div>
+                    <div class="column">
+                        <img src="images/covid_news.png" alt="Forest" style="width:100%">
+                    </div>
+                    <div class="column">
+                        <input type="button" class="button"  value="View More">
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <h2 style="text-align:center;">Health Centers</h2>
+                    <hr>
+                    <div class="covid_news">
+                        <div class="column">
+                            <img src="images/health_center1.png"  style="width:100%">
+                        </div>
+                        <div class="column">
+                            <img src="images/health_center2.png" style="width:100%">
+                        </div>
+                        <div class="column">
+                            <img src="images/health_3.jpg" style="width:100%">
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <script src="javascripts/login.js"></script>
+            <footer>
+                <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+                <a href="#about">About</a>
+                <a href="#FAQS">FAQS</a>
+            </footer>
+        </div>
+    </body>
+</html>

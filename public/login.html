@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login</title>
+        <meta charset= "UTF-8" >
+        <link rel="stylesheet" href="stylesheets/login.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="javascripts/login.js"></script>
+    </head>
+    <body>
+       <header>
+        <img class="logo" src="project_logo.png" alt="CovidWatch"/>
+         <h1> </h1>
+        </header>
+
+       <form>
+        <div class="form">
+
+            <div class="row">
+                <div class="column">
+                    <img src="images/login.png" style="width:100%">
+                    <input type="radio" id="admin" name="user_type" value="admin">
+                    <label for="admin">Admin</label>
+                </div>
+               <div class="column">
+                     <img src="images/login.png" style="width:100%">
+                     <input type="radio" id="user" name="user_type" value="user">
+                     <label for="user">User</label>
+               </div>
+              <div class="column">
+                  <img src="images/login.png" style="width:100%">
+                   <input type="radio" id="manager" name="user_type" value="manager">
+                    <label for="manager">Venue Manager</label>
+              </div>
+            </div>
+
+            <label for="User"> Username : </label>
+                <input type="username" placeholder="Username" name="username" required id="username">
+
+            <label for="Pass">Password : </label>
+                <input type="password" placeholder="Enter Password" name="password" required id="password">
+
+
+            <button class="btn" onclick="login()">Login</button>
+
+
+
+
+             <p>Login via?</p>
+             <a href="#" class="fa fa-facebook"></a>
+             <a href="#" class="fa fa-twitter"></a>
+             <a href="#" class="fa fa-google"></a>
+
+             <p>Not a member?
+             <a>SignUp</a>
+             </p>
+
+        </div>
+    </form>
+
+    <footer>
+                <a href="#contact"> Contact</a>
+                <a href="#about">About</a>
+                <a href="#FAQS">FAQS</a>
+     </footer>
+    </body>
+</html>
+
+

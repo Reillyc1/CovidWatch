@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Account</title>
+        <meta charset='UTF-8'>
+        <link rel="stylesheet" href="stylesheets/manager.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="javascripts/home.js" defer></script>
+        <script src="javascripts/manager.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="project_logo.png" alt="CovidWatch"/>
+            <h1> </h1>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn right" onclick="dropdown()"><i class="fa fa-user"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a class="inner" href="/home">Home</a>
+                        <button class="inner" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+        </header>
+        <main id="main">
+            <div id="details">
+                <div class="n_details">Name: [some name]</div>
+                <div class="e_details">
+                    Email: [some email]
+                    <button>Change Email?</button>
+                </div>
+                <button class="password_change">Change Password?</button>
+            </div>
+            <button type="button" class="collapsible">View Venue Check-in History <i class="arrow down"></i> </button>
+            <div class="content">
+                <p>akdlafdklahf</p>
+            </div>
+            <div id="capacity">
+                <h3>How many people can attend my venue at a time?</h3>
+                <div class="block">
+                    <label>Enter area of venue: </label>
+                    <input type = "text" placeholder = "enter area (m^2)"/>
+                </div>
+                <p>Venue capacity: </p>
+            </div>
+            <div id="generate_code">
+                <h3>Generate a unique code for my venue: </h3>
+                <div id="unique_code"></div>
+                <button onclick="makeid(5)">generate code</button><br/>
+                <a>large code (for display in venue)</a>
+            </div>
+        </main>
+        <footer>
+            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#about">About</a>
+            <a href="#FAQS">FAQS</a>
+        </footer>
+    </body>
+</html>

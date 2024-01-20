@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset= "UTF-8" >
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="stylesheets/signup.css">
+        <script src="javascripts/signup.js"> </script>
+    </head>
+    <body>
+       <header>
+        <img class="logo" src="project_logo.png" alt="CovidWatch"/>
+         <h1> </h1>
+        </header>
+
+        <form>
+            <div class="form">
+                <div class="row">
+                    <div class="column">
+                        <img src="images/login.png" style="width:100%">
+                        <input type="radio" id="user" name="user_type" value="user" required>
+                        <label for="user">User</label>
+                    </div>
+                    <div class="column">
+                        <img src="images/login.png" style="width:100%">
+                        <input type="radio" id="manager" name="user_type" value="manager" required>
+                        <label for="manager">Venue Manager</label>
+                    </div>
+                </div>
+
+
+
+                <label for="given_name"> Enter First Name : </label>
+                    <input type="text" placeholder="Enter First Name" name="given_name" required id="given_name">
+
+                <label for="family_name"> Enter Family Name : </label>
+                    <input type="text" placeholder="Enter Family Name" name="family_name" required id="family_name">
+
+                <label class="email">Email: </label>
+                    <input type="text" id="email" placeholder="Enter Email" name="email" required>
+
+                <label for="User"> Enter Username : </label>
+                    <input type="username" placeholder="Username" name="Enter Username" required id="username">
+
+                <label for="password">Create Password: </label>
+                    <input type="Password" id="password" placeholder="Enter Password" name="password" required>
+
+                <label for="password">Re-enter Password: </label>
+                    <input type="Password" id="password" placeholder="Enter Password" name="password" required>
+
+                <button class="btn" onclick="signup()">Sign-up</button>
+
+                <input type="checkbox" id="emails" name="emails" value="emails">
+                <label for="emails" id="check_label">I would like to receive email notifications of hotspot updates</label>
+            </div>
+        </form>
+
+         <footer>
+                <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+                <a href="#about">About</a>
+                <a href="#FAQS">FAQS</a>
+         </footer>
+    </body>
+</html>

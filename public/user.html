@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Account</title>
+        <link rel = "stylesheet" href = "stylesheets/user.css">
+        <script src="javascripts/home.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body onload="username(); email()">
+        <header>
+            <img class="logo" src="project_logo.png" alt="CovidWatch"/>
+            <h1> </h1>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn right" onclick="dropdown()"><i class="fa fa-user"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a class="inner" href="/home">Home</a>
+                        <button class="inner" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+        </header>
+        <main id="main">
+            <div id="details">
+                    <div class="n_details" id="username">Name: [some name]</div>
+                    <div class="e_details" id="email">
+                        Email: [some email]
+                        <button>Change Email?</button>
+                    </div>
+                    <button class="password_change">Change Password?</button>
+                </div>
+                <br><br>
+                <button type="button" class="collapsible" onclick="history()">View Personal Check-in History <i class="arrow down"></i> </button>
+                <div class="content">
+                    <div id="history"></div>
+                </div>
+                <br><br>
+          <footer>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="#FAQS">FAQS</a>
+          </footer>
+      </main>
+    </body>
+</html>
