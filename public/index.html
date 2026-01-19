@@ -36,7 +36,8 @@
                 <div class = "container">
                     <div id='map'v-show = "tab == 'map'">a</div>
                     <script>
-                    mapboxgl.accessToken = 'pk.eyJ1Ijoia2F0ZXIwMDAiLCJhIjoiY2twdjY2dHYyMGt5MTJ1b2pkMDRybWV3ciJ9.AaF3nglVr2e1Xn4mGYUVbA';
+                    // Get your own token at https://mapbox.com
+                    mapboxgl.accessToken = 'YOUR_MAPBOX_TOKEN_HERE';
                     var map = new mapboxgl.Map({
                         container: 'map', // container ID
                         style: 'mapbox://styles/mapbox/streets-v11', // style URL
