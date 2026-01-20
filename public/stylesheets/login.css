@@ -1,132 +1,172 @@
-body{
-  font-family: 'Open Sans', sans-serif;
+/**
+ * CovidWatch - Login Page Stylesheet
+ */
 
-  width:100%;
-  text-align:center;
-  margin: 20px 0px 20px 0px;
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #666;
+    --text-color: #333;
+    --border-radius: 5px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form{
-  background:white;
-  width:300px;
-  border-radius:6px;
-  margin: 0 auto 0 auto;
-  padding:10px 10px 70px 0px;
-  border: 4px solid;
-}
-.User
-{
-  padding: 10px;
-  width:250px;
-  margin-top:15px;
-  margin-bottom:10px;
-}
-#username
-{
-  margin:10px 10px;
+* {
+    box-sizing: border-box;
 }
 
-.Pass
-{
-  padding: 10px;
-  width:250px;
-  margin-top:15px;
-  margin-bottom:10px;
-
-}
-#password
-{
-    margin:10px 10px;
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    flex-direction: column;
 }
 
-.btn{
-  background-color:black;
-  width:100px;
-  padding-top:5px;
-  padding-bottom:5px;
-
-
-
-  color:white;
-  border-radius:2px;
-  margin:20px 20px 10px;
-
-
-
-
-}
-.right
-{
-  float: right;
-}
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-}
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
-.fa-google {
-  background: #dd4b39;
-  color: white;
-}
-
-.column {
-  float: left;
-  width: 30%;
-  padding: 5px;
-}
-header{
-  background-color: #f2f2f2;
-  border-top: 3px solid #696969;
-  top: 0;
-  padding: 1.8em 2em;
-  border-bottom: 3px solid #696969;
-  margin-bottom:30px;
-
-
-
+header {
+    background-color: #fff;
+    border-bottom: 3px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    box-shadow: var(--box-shadow);
 }
 
 header .logo {
-  float: left;
-
-  height: 50px;
-  width: 100px;
-  margin-top: -6px;
-
+    height: 40px;
+    width: auto;
 }
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--dark-gray);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group label i {
+    width: 20px;
+    color: var(--dark-gray);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.form-footer p {
+    margin: 0.5rem 0;
+    color: var(--dark-gray);
+}
+
+.form-footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
 footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: grey;
-  color: white;
-  text-align: center;
+    background-color: var(--primary-color);
+    padding: 0;
 }
-
-
-footer a:hover
-{
-  background-color: #e6e6e6;
-}
-
 
 footer a {
-  float: left;
-  display: block;
-  color: black;
-  background-color: #f2f2f2;
-  text-align: center;
-  padding: 30px 16px;
-  font-size: 20px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-size: 14px;
 }
 
+footer a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}

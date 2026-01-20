@@ -1,108 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>CovidWatch</title>
-        <meta charset= "UTF-8" >
-        <link rel="stylesheet" href="stylesheets/style.css">
-        <script src="javascripts/home.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet'/>
-    </head>
-    <body onload="showHide()">
-        <div id="site">
-            <header>
-                <img class="logo" src="project_logo.png" alt="CovidWatch"  width=100%>
-                <h1> </h1>
-                <button type="button" class="right logged_out"><a href="/signup.html">Sign Up</a></button>
-                <button type="button" class="right logged_out"><a href="/login.html">Login</a></button>
-                <div class="dropdown logged_in">
-                    <button type="button" class="dropbtn right" onclick="dropdown()"><i class="fa fa-user"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a class="inner" href="/account">Account</a>
-                        <button class="inner" onclick="logout()">Logout</button>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CovidWatch - Contact Tracing</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascripts/home.js"></script>
+    <script src="javascripts/login.js"></script>
+    <!-- Mapbox for interactive COVID hotspot map -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+</head>
+<body onload="showHide()">
+    <div id="site">
+        <header>
+            <a href="/">
+                <img class="logo" src="project_logo.png" alt="CovidWatch">
+            </a>
+            <h1></h1>
+            <!-- Navigation buttons shown when logged out -->
+            <button type="button" class="right logged_out"><a href="/signup.html">Sign Up</a></button>
+            <button type="button" class="right logged_out"><a href="/login.html">Login</a></button>
+            <!-- User dropdown menu shown when logged in -->
+            <div class="dropdown logged_in">
+                <button type="button" class="dropbtn right" onclick="dropdown()">
+                    <i class="fa fa-user"></i>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a class="inner" href="/account">Account</a>
+                    <button class="inner" onclick="logout()">Logout</button>
                 </div>
-            </header>
-            <main id="main">
-                <div class="logged_in">
-                    <h2>Venue Check-In &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input placeholder="Enter Venue/Location Code" type="text" id="check_in" required>
-                    <input placeholder="Enter Username" type="username" id="username" required>
-                    <button class="check_in" onclick="check_ins()">Check in!</button>
-                    </h2>
+            </div>
+        </header>
+
+        <main id="main">
+            <!-- Venue Check-in Section (shown when logged in) -->
+            <div class="logged_in check-in-section">
+                <h2>Venue Check-In</h2>
+                <p class="check-in-description">Enter the venue's unique code to record your visit for contact tracing.</p>
+                <div class="check-in-form">
+                    <input type="text" placeholder="Enter Venue Code (e.g., ABC123)" id="check_in" maxlength="10" required>
+                    <button class="check_in_btn" onclick="check_ins()">
+                        <i class="fa fa-check"></i> Check In
+                    </button>
                 </div>
-                <div class = "container">
-                    <div id='map'v-show = "tab == 'map'">a</div>
-                    <script>
+            </div>
+
+            <!-- Interactive Map Section -->
+            <div class="container">
+                <h2>COVID-19 Hotspot Map</h2>
+                <div id="map"></div>
+                <script>
+                    // Mapbox initialization
                     // Get your own token at https://mapbox.com
                     mapboxgl.accessToken = 'YOUR_MAPBOX_TOKEN_HERE';
                     var map = new mapboxgl.Map({
-                        container: 'map', // container ID
-                        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                        center: [133.7751,-25.2744], // starting position [lng, lat]
-                        zoom: 1 // starting zoom
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/streets-v11',
+                        center: [133.7751, -25.2744], // Australia center
+                        zoom: 3
                     });
+                    // Add navigation controls (zoom buttons)
                     var nav = new mapboxgl.NavigationControl();
                     map.addControl(nav, 'top-left');
+                    // Example marker - Melbourne
                     var marker = new mapboxgl.Marker({
-                        color: "#990000",
-                        }).setLngLat([144.9631,-37.8136])
-                        .addTo(map);
-                    </script>
-                    <div id = 'markers' v-if = "tab == 'markers'"></div>
-                    <table class="pure-table pure-table-horizontal">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Longitude</th>
-                            <th>Latitude</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for = 'marker in markers'>
-                            <td>{{ marker.ID }}</td>
-                            <td>{{ marker.longitude }}</td>
-                            <td>{{ marker.latitude }}</td>
-                    </tbody>
-                </table>
-                <div id = 'add' v-if = "tab == 'add'"></div>
-                <hr>
+                        color: "#990000"
+                    }).setLngLat([144.9631, -37.8136])
+                      .addTo(map);
+                </script>
+            </div>
+
+            <hr>
+
+            <!-- COVID News Section -->
+            <section class="news-section">
+                <h2>Latest COVID-19 News</h2>
                 <div class="covid_news">
                     <div class="column">
-                        <img src="images/covid_new2.png" alt="Snow" style="width:100%">
+                        <img src="images/covid_new2.png" alt="COVID-19 News Update">
                     </div>
                     <div class="column">
-                        <img src="images/covid_news.png" alt="Forest" style="width:100%">
+                        <img src="images/covid_news.png" alt="COVID-19 Information">
                     </div>
                     <div class="column">
-                        <input type="button" class="button"  value="View More">
+                        <button class="button view-more-btn">View More News</button>
                     </div>
                 </div>
-                <hr>
-                <div>
-                    <h2 style="text-align:center;">Health Centers</h2>
-                    <hr>
-                    <div class="covid_news">
-                        <div class="column">
-                            <img src="images/health_center1.png"  style="width:100%">
-                        </div>
-                        <div class="column">
-                            <img src="images/health_center2.png" style="width:100%">
-                        </div>
-                        <div class="column">
-                            <img src="images/health_3.jpg" style="width:100%">
-                        </div>
+            </section>
+
+            <hr>
+
+            <!-- Health Centers Section -->
+            <section class="health-section">
+                <h2>Nearby Health Centers</h2>
+                <div class="covid_news">
+                    <div class="column">
+                        <img src="images/health_center1.png" alt="Health Center">
+                    </div>
+                    <div class="column">
+                        <img src="images/health_center2.png" alt="Testing Location">
+                    </div>
+                    <div class="column">
+                        <img src="images/health_3.jpg" alt="Medical Facility">
                     </div>
                 </div>
-            </main>
-            <script src="javascripts/login.js"></script>
-            <footer>
-                <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-                <a href="#about">About</a>
-                <a href="#FAQS">FAQS</a>
-            </footer>
-        </div>
-    </body>
+            </section>
+        </main>
+
+        <footer>
+            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#about">About</a>
+            <a href="#faqs">FAQs</a>
+        </footer>
+    </div>
+</body>
 </html>

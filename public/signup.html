@@ -1,63 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta charset= "UTF-8" >
-    <head>
-        <title></title>
-        <link rel="stylesheet" href="stylesheets/signup.css">
-        <script src="javascripts/signup.js"> </script>
-    </head>
-    <body>
-       <header>
-        <img class="logo" src="project_logo.png" alt="CovidWatch"/>
-         <h1> </h1>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CovidWatch</title>
+    <link rel="stylesheet" href="stylesheets/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascripts/signup.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img class="logo" src="project_logo.png" alt="CovidWatch">
+        </a>
+    </header>
 
-        <form>
-            <div class="form">
-                <div class="row">
-                    <div class="column">
-                        <img src="images/login.png" style="width:100%">
-                        <input type="radio" id="user" name="user_type" value="user" required>
-                        <label for="user">User</label>
-                    </div>
-                    <div class="column">
-                        <img src="images/login.png" style="width:100%">
-                        <input type="radio" id="manager" name="user_type" value="manager" required>
-                        <label for="manager">Venue Manager</label>
+    <main>
+        <div class="form-container">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join CovidWatch for contact tracing</p>
+
+            <form onsubmit="event.preventDefault(); signup();">
+                <!-- Account Type Selection -->
+                <div class="account-type-section">
+                    <p class="section-label">Select Account Type:</p>
+                    <div class="account-types">
+                        <label class="account-type-option">
+                            <input type="radio" id="user" name="user_type" value="user" required>
+                            <div class="option-content">
+                                <i class="fa fa-user"></i>
+                                <span>User</span>
+                                <small>Check in to venues</small>
+                            </div>
+                        </label>
+                        <label class="account-type-option">
+                            <input type="radio" id="manager" name="user_type" value="manager" required>
+                            <div class="option-content">
+                                <i class="fa fa-building"></i>
+                                <span>Venue Manager</span>
+                                <small>Manage venue check-ins</small>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
+                <!-- Personal Information -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="given_name">First Name</label>
+                        <input type="text" id="given_name" name="given_name" placeholder="Enter first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="family_name">Last Name</label>
+                        <input type="text" id="family_name" name="family_name" placeholder="Enter last name" required>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fa fa-envelope"></i> Email Address
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
 
-                <label for="given_name"> Enter First Name : </label>
-                    <input type="text" placeholder="Enter First Name" name="given_name" required id="given_name">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fa fa-user"></i> Username
+                    </label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required minlength="3" maxlength="30">
+                    <small class="help-text">3-30 characters, letters, numbers, and underscores only</small>
+                </div>
 
-                <label for="family_name"> Enter Family Name : </label>
-                    <input type="text" placeholder="Enter Family Name" name="family_name" required id="family_name">
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fa fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required minlength="6">
+                    <small class="help-text">Minimum 6 characters</small>
+                </div>
 
-                <label class="email">Email: </label>
-                    <input type="text" id="email" placeholder="Enter Email" name="email" required>
+                <div class="form-group">
+                    <label for="confirm_password">
+                        <i class="fa fa-lock"></i> Confirm Password
+                    </label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+                </div>
 
-                <label for="User"> Enter Username : </label>
-                    <input type="username" placeholder="Username" name="Enter Username" required id="username">
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="notifications" name="notifications">
+                        <span>I would like to receive email notifications about COVID-19 hotspots</span>
+                    </label>
+                </div>
 
-                <label for="password">Create Password: </label>
-                    <input type="Password" id="password" placeholder="Enter Password" name="password" required>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-user-plus"></i> Create Account
+                </button>
+            </form>
 
-                <label for="password">Re-enter Password: </label>
-                    <input type="Password" id="password" placeholder="Enter Password" name="password" required>
-
-                <button class="btn" onclick="signup()">Sign-up</button>
-
-                <input type="checkbox" id="emails" name="emails" value="emails">
-                <label for="emails" id="check_label">I would like to receive email notifications of hotspot updates</label>
+            <div class="form-footer">
+                <p>Already have an account? <a href="/login.html">Login here</a></p>
+                <p><a href="/">Back to Home</a></p>
             </div>
-        </form>
+        </div>
+    </main>
 
-         <footer>
-                <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-                <a href="#about">About</a>
-                <a href="#FAQS">FAQS</a>
-         </footer>
-    </body>
+    <footer>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#faqs">FAQs</a>
+    </footer>
+</body>
 </html>

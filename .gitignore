@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Environment variables (contains sensitive data)
+.env
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build outputs
+dist/
+build/

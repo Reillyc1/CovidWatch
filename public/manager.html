@@ -1,57 +1,108 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <title>Account</title>
-        <meta charset='UTF-8'>
-        <link rel="stylesheet" href="stylesheets/manager.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="javascripts/home.js" defer></script>
-        <script src="javascripts/manager.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <img class="logo" src="project_logo.png" alt="CovidWatch"/>
-            <h1> </h1>
-                <div class="dropdown">
-                    <button type="button" class="dropbtn right" onclick="dropdown()"><i class="fa fa-user"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a class="inner" href="/home">Home</a>
-                        <button class="inner" onclick="logout()">Logout</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Manager - CovidWatch</title>
+    <link rel="stylesheet" href="stylesheets/manager.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascripts/home.js" defer></script>
+    <script src="javascripts/login.js" defer></script>
+    <script src="javascripts/manager.js" defer></script>
+</head>
+<body onload="username(); email()">
+    <header>
+        <a href="/">
+            <img class="logo" src="project_logo.png" alt="CovidWatch">
+        </a>
+        <div class="dropdown">
+            <button type="button" class="dropbtn right" onclick="dropdown()">
+                <i class="fa fa-user"></i>
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+                <a class="inner" href="/">Home</a>
+                <button class="inner" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <h1><i class="fa fa-building"></i> Venue Manager Dashboard</h1>
+
+            <!-- Account Details Section -->
+            <section class="account-section">
+                <h2>Account Details</h2>
+                <div class="details-card">
+                    <div class="detail-row">
+                        <span class="detail-label"><i class="fa fa-user"></i> Username:</span>
+                        <span class="detail-value" id="username">Loading...</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label"><i class="fa fa-envelope"></i> Email:</span>
+                        <span class="detail-value" id="email">Loading...</span>
                     </div>
                 </div>
-        </header>
-        <main id="main">
-            <div id="details">
-                <div class="n_details">Name: [some name]</div>
-                <div class="e_details">
-                    Email: [some email]
-                    <button>Change Email?</button>
+            </section>
+
+            <!-- Venue Check-in History Section -->
+            <section class="history-section">
+                <h2>Venue Check-in History</h2>
+                <button type="button" class="collapsible" onclick="history()">
+                    <i class="fa fa-list"></i> View Venue Check-ins
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <div class="content">
+                    <div id="history">
+                        <p>Click the button above to view check-in records for your venue.</p>
+                    </div>
                 </div>
-                <button class="password_change">Change Password?</button>
-            </div>
-            <button type="button" class="collapsible">View Venue Check-in History <i class="arrow down"></i> </button>
-            <div class="content">
-                <p>akdlafdklahf</p>
-            </div>
-            <div id="capacity">
-                <h3>How many people can attend my venue at a time?</h3>
-                <div class="block">
-                    <label>Enter area of venue: </label>
-                    <input type = "text" placeholder = "enter area (m^2)"/>
+            </section>
+
+            <!-- Generate Venue Code Section -->
+            <section class="code-section">
+                <h2><i class="fa fa-key"></i> Generate Venue Code</h2>
+                <p class="section-description">
+                    Generate a unique check-in code for your venue. Display this code at your entrance
+                    for visitors to scan or enter when checking in.
+                </p>
+                <div class="code-generator">
+                    <div id="unique_code" class="generated-code">
+                        Click the button to generate a code
+                    </div>
+                    <button class="btn btn-primary" onclick="makeid(6)">
+                        <i class="fa fa-refresh"></i> Generate New Code
+                    </button>
                 </div>
-                <p>Venue capacity: </p>
-            </div>
-            <div id="generate_code">
-                <h3>Generate a unique code for my venue: </h3>
-                <div id="unique_code"></div>
-                <button onclick="makeid(5)">generate code</button><br/>
-                <a>large code (for display in venue)</a>
-            </div>
-        </main>
-        <footer>
-            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-            <a href="#about">About</a>
-            <a href="#FAQS">FAQS</a>
-        </footer>
-    </body>
+            </section>
+
+            <!-- Capacity Calculator Section -->
+            <section class="capacity-section">
+                <h2><i class="fa fa-calculator"></i> COVID-Safe Capacity Calculator</h2>
+                <p class="section-description">
+                    Calculate the maximum number of people allowed in your venue based on
+                    COVID-safe distancing requirements (4 square meters per person).
+                </p>
+                <div class="capacity-calculator">
+                    <div class="input-group">
+                        <label for="venue_area">
+                            <i class="fa fa-arrows-alt"></i> Venue Area (m²):
+                        </label>
+                        <input type="number" id="venue_area" placeholder="Enter area in square meters" min="1" step="0.1">
+                    </div>
+                    <div class="capacity-result">
+                        <span class="result-label">Maximum Capacity:</span>
+                        <span id="capacity_result" class="result-value">Enter area above</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#faqs">FAQs</a>
+    </footer>
+</body>
 </html>

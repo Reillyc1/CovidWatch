@@ -1,69 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Login</title>
-        <meta charset= "UTF-8" >
-        <link rel="stylesheet" href="stylesheets/login.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="javascripts/login.js"></script>
-    </head>
-    <body>
-       <header>
-        <img class="logo" src="project_logo.png" alt="CovidWatch"/>
-         <h1> </h1>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CovidWatch</title>
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascripts/login.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img class="logo" src="project_logo.png" alt="CovidWatch">
+        </a>
+    </header>
 
-       <form>
-        <div class="form">
+    <main>
+        <div class="form-container">
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Sign in to access your account</p>
 
-            <div class="row">
-                <div class="column">
-                    <img src="images/login.png" style="width:100%">
-                    <input type="radio" id="admin" name="user_type" value="admin">
-                    <label for="admin">Admin</label>
+            <form onsubmit="event.preventDefault(); login();">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fa fa-user"></i> Username
+                    </label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="username">
                 </div>
-               <div class="column">
-                     <img src="images/login.png" style="width:100%">
-                     <input type="radio" id="user" name="user_type" value="user">
-                     <label for="user">User</label>
-               </div>
-              <div class="column">
-                  <img src="images/login.png" style="width:100%">
-                   <input type="radio" id="manager" name="user_type" value="manager">
-                    <label for="manager">Venue Manager</label>
-              </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fa fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-sign-in"></i> Login
+                </button>
+            </form>
+
+            <div class="form-footer">
+                <p>Don't have an account? <a href="/signup.html">Sign up here</a></p>
+                <p><a href="/">Back to Home</a></p>
             </div>
-
-            <label for="User"> Username : </label>
-                <input type="username" placeholder="Username" name="username" required id="username">
-
-            <label for="Pass">Password : </label>
-                <input type="password" placeholder="Enter Password" name="password" required id="password">
-
-
-            <button class="btn" onclick="login()">Login</button>
-
-
-
-
-             <p>Login via?</p>
-             <a href="#" class="fa fa-facebook"></a>
-             <a href="#" class="fa fa-twitter"></a>
-             <a href="#" class="fa fa-google"></a>
-
-             <p>Not a member?
-             <a>SignUp</a>
-             </p>
-
         </div>
-    </form>
+    </main>
 
     <footer>
-                <a href="#contact"> Contact</a>
-                <a href="#about">About</a>
-                <a href="#FAQS">FAQS</a>
-     </footer>
-    </body>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#faqs">FAQs</a>
+    </footer>
+</body>
 </html>
-
-
