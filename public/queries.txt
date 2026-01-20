@@ -1,0 +1,49 @@
+-- Login query
+SELECT u_id, given_name, family_name, username, email FROM `user` WHERE username = ? AND password = SHA2(?, 256);
+
+-- Sample user inserts
+INSERT INTO `user` (u_id, given_name, family_name, username, password, email_address, user_type)
+VALUES (1, 'Bob', 'Brice', 'bobrice_', SHA2('BobTheLegend963', 256), 'bobrice@example.email', 'user');
+
+INSERT INTO `user` (u_id, given_name, family_name, username, password, email_address, user_type)
+VALUES (2, 'Jenny', 'Elliot', 'jen_e11', SHA2('Planet481216!', 256), 'jennyelliot11@example.email', 'manager');
+
+INSERT INTO `user` (u_id, given_name, family_name, username, password, email_address, user_type)
+VALUES (3, 'George', 'Snow', 'snowy123098', SHA2('Sunny000!', 256), 'georges@example.email', 'admin');
+
+-- Check-in insert
+INSERT INTO check_ins (check_in_code, u_id, date_, time_)
+VALUES ('8H8lRa', 1, '2020-05-28', '13:24:31');
+
+-- Modify check_in_code column
+ALTER TABLE check_ins
+MODIFY COLUMN check_in_code VARCHAR(6);
+
+-- Venue insert
+INSERT INTO venue (v_id, street_number, street_name, suburb_town, state, postcode, country, check_in_code)
+VALUES (1, 11, 'Baking Street', 'Glenelg', 'SA', 5045, 'Australia', '8H8lRa');
+
+-- User registration query (parameterized)
+INSERT INTO `user` (given_name, family_name, username, password, email_address)
+VALUES (?, ?, ?, SHA2(?, 256), ?);
+
+-- Check-in insert (parameterized)
+INSERT INTO check_ins (check_in_code, date_, time_, u_id)
+VALUES (?, ?, ?, ?);
+
+-- Modify check_in_code to be primary key
+ALTER TABLE check_ins
+MODIFY COLUMN check_in_code VARCHAR(6) PRIMARY KEY;
+
+-- Add username column to check_ins
+ALTER TABLE check_ins
+ADD COLUMN username VARCHAR(50) UNIQUE;
+
+-- Update check-in with username
+UPDATE check_ins
+SET username = 'bobrice_'
+WHERE check_in_code = 'P8h73i';
+
+-- Join check_ins with user
+SELECT * FROM check_ins
+INNER JOIN `user` ON check_ins.username = `user`.username;
