@@ -74,8 +74,22 @@ function signup() {
         return;
     }
 
-    if (passwordInput.value.length < 6) {
-        alert('Password must be at least 6 characters long');
+    // Strong password requirements
+    var password = passwordInput.value;
+    if (password.length < 8) {
+        alert('Password must be at least 8 characters long');
+        return;
+    }
+    if (!/[a-z]/.test(password)) {
+        alert('Password must contain at least one lowercase letter');
+        return;
+    }
+    if (!/[A-Z]/.test(password)) {
+        alert('Password must contain at least one uppercase letter');
+        return;
+    }
+    if (!/[0-9]/.test(password)) {
+        alert('Password must contain at least one number');
         return;
     }
 

@@ -58,12 +58,14 @@ DROP TABLE IF EXISTS `check_ins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `check_ins` (
-  `check_in_code` varchar(6) NOT NULL,
+  `check_in_code` varchar(10) NOT NULL,
   `date_` date DEFAULT NULL,
   `time_` time DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `c_id` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`c_id`)
+  PRIMARY KEY (`c_id`),
+  INDEX `idx_username` (`username`),
+  INDEX `idx_date` (`date_`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -173,5 +175,32 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+--
+-- Table structure for table `mapmarkers`
+--
+
+DROP TABLE IF EXISTS `mapmarkers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mapmarkers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `longitude` decimal(10,7) NOT NULL,
+  `latitude` decimal(10,7) NOT NULL,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `idx_coordinates` (`longitude`, `latitude`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mapmarkers`
+--
+
+LOCK TABLES `mapmarkers` WRITE;
+/*!40000 ALTER TABLE `mapmarkers` DISABLE KEYS */;
+INSERT INTO `mapmarkers` VALUES (1, 144.9631000, -37.8136000, NOW());
+/*!40000 ALTER TABLE `mapmarkers` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- Dump completed on 2021-06-14 13:58:43

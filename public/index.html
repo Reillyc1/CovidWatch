@@ -51,24 +51,69 @@
             <div class="container">
                 <h2>COVID-19 Hotspot Map</h2>
                 <div id="map"></div>
+                <div id="map-loading" style="text-align: center; padding: 20px; display: none;">
+                    <p>Loading map...</p>
+                </div>
+                <div id="map-error" style="text-align: center; padding: 20px; color: #990000; display: none;">
+                    <p>Map unavailable. Please log in to view the COVID-19 hotspot map.</p>
+                </div>
                 <script>
-                    // Mapbox initialization
-                    // Get your own token at https://mapbox.com
-                    mapboxgl.accessToken = 'YOUR_MAPBOX_TOKEN_HERE';
-                    var map = new mapboxgl.Map({
-                        container: 'map',
-                        style: 'mapbox://styles/mapbox/streets-v11',
-                        center: [133.7751, -25.2744], // Australia center
-                        zoom: 3
-                    });
-                    // Add navigation controls (zoom buttons)
-                    var nav = new mapboxgl.NavigationControl();
-                    map.addControl(nav, 'top-left');
-                    // Example marker - Melbourne
-                    var marker = new mapboxgl.Marker({
-                        color: "#990000"
-                    }).setLngLat([144.9631, -37.8136])
-                      .addTo(map);
+                    // Mapbox initialization with secure token loading
+                    // Token is fetched from server to prevent client-side exposure
+                    (function() {
+                        var mapContainer = document.getElementById('map');
+                        var loadingEl = document.getElementById('map-loading');
+                        var errorEl = document.getElementById('map-error');
+
+                        function initMap(token) {
+                            mapboxgl.accessToken = token;
+                            var map = new mapboxgl.Map({
+                                container: 'map',
+                                style: 'mapbox://styles/mapbox/streets-v11',
+                                center: [133.7751, -25.2744],
+                                zoom: 3
+                            });
+                            var nav = new mapboxgl.NavigationControl();
+                            map.addControl(nav, 'top-left');
+                            var marker = new mapboxgl.Marker({
+                                color: "#990000"
+                            }).setLngLat([144.9631, -37.8136])
+                              .addTo(map);
+
+                            loadingEl.style.display = 'none';
+                            mapContainer.style.display = 'block';
+                        }
+
+                        function showError() {
+                            loadingEl.style.display = 'none';
+                            mapContainer.style.display = 'none';
+                            errorEl.style.display = 'block';
+                        }
+
+                        // Fetch token from server
+                        loadingEl.style.display = 'block';
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', '/api/config/mapbox', true);
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    try {
+                                        var response = JSON.parse(xhr.responseText);
+                                        if (response.token) {
+                                            initMap(response.token);
+                                        } else {
+                                            showError();
+                                        }
+                                    } catch (e) {
+                                        showError();
+                                    }
+                                } else {
+                                    showError();
+                                }
+                            }
+                        };
+                        xhr.send();
+                    })();
                 </script>
             </div>
 
